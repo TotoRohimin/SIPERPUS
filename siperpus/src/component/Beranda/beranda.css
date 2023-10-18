@@ -1,0 +1,11 @@
+#section {
+  background-image: linear-gradient(white, blue);
+}
+
+.perpus {
+  max-width: 90%;
+}
+
+.col-md-4 {
+  padding-top: 200px;
+}
