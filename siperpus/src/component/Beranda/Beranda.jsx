@@ -1,0 +1,62 @@
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import perpusPicture from "/perpus.png";
+import "./beranda.css";
+
+function Beranda() {
+  return (
+    <div id="beranda">
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand href="#home">
+            <b>SIPERPUS</b>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Beranda</Nav.Link>
+              <Nav.Link href="#tentang">Tentang</Nav.Link>
+              <Nav.Link href="#kontak">Kontak</Nav.Link>
+              <Nav.Link href="#buku">Buku</Nav.Link>
+              <NavDropdown title="Data Master" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Peminjaman</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Laporan</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <section id="section">
+        <div className="container">
+          <div className="row text-center">
+            <div className="row justify-content-center mb-3">
+              <div className="col-md-8">
+                <img src={perpusPicture} className="perpus" alt="perpustakaan" />
+              </div>
+              <div className="col-md-4">
+                <h1 className="text">
+                  <i>
+                    <b>SIPERPUS</b>
+                  </i>
+                </h1>
+                <p className="text-2">
+                  <b>
+                    <i>
+                      "Meminjam Buku Lebih Baik <br /> daripada Meminjam Seratus"
+                    </i>
+                  </b>
+                </p>
+                <button className="btn btn-primary">Selengkapnya</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default Beranda;
