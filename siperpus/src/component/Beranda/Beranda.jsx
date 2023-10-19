@@ -11,13 +11,13 @@ function Beranda() {
     <div id="beranda">
       <Navbar expand="lg" className="navbar bg-light shadow fixed-top">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#beranda">
             <b>SIPERPUS</b>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#home">Beranda</Nav.Link>
+              <Nav.Link href="#beranda">Beranda</Nav.Link>
               <Nav.Link href="#tentang">Tentang</Nav.Link>
               <Nav.Link href="#kontak">Kontak</Nav.Link>
               <Nav.Link href="#buku">Buku</Nav.Link>
@@ -37,7 +37,7 @@ function Beranda() {
                 <img src={perpusPicture} className="perpus" alt="perpustakaan" />
               </div>
               <div className="col-md-4">
-                <h1 className="text">
+                <h1 className="display-3">
                   <i>
                     <b>SIPERPUS</b>
                   </i>
@@ -49,7 +49,13 @@ function Beranda() {
                     </i>
                   </b>
                 </p>
-                <button className="btn btn-primary">Selengkapnya</button>
+                <br />
+                <p>Pencarian Buku yang Mudah, Pinjaman yang Cepat, dan Pembelajaran yang Tak Terbatas Hanya di SIPERPUS.</p>
+                <a href="#tentang">
+                  <button type="button" className="btn btn-light btn-lg">
+                    Selengkapnya
+                  </button>
+                </a>
               </div>
             </div>
           </div>
