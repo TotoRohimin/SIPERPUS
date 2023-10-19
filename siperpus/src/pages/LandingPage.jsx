@@ -1,7 +1,8 @@
 import React from "react";
 import Beranda from "../component/Beranda/Beranda";
-import Kontak from "../component/Kontak/Kontak";
 import Tentang from "../component/Tentang/Tentang";
+import Footer from "../component/Kontak/footer";
+import Kontak from "../component/Kontak/Kontak";
 
 function LandingPage() {
   return (
@@ -9,6 +10,7 @@ function LandingPage() {
       <Beranda />
       <Tentang />
       <Kontak />
+      <Footer />
     </div>
   );
 }
