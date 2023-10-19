@@ -9,14 +9,14 @@ import "./beranda.css";
 function Beranda() {
   return (
     <div id="beranda">
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="navbar bg-light shadow fixed-top">
         <Container>
           <Navbar.Brand href="#home">
             <b>SIPERPUS</b>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="ms-auto">
               <Nav.Link href="#home">Beranda</Nav.Link>
               <Nav.Link href="#tentang">Tentang</Nav.Link>
               <Nav.Link href="#kontak">Kontak</Nav.Link>
