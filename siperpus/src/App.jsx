@@ -1,15 +1,13 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Beranda from "./component/Beranda/Beranda";
-import Kontak from "./component/Kontak/Kontak.1";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div>
-      <Beranda />
-      <Kontak />
+      <LandingPage />
     </div>
   );
 }
