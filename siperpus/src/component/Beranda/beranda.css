@@ -1,6 +1,8 @@
 #section {
-  background-image: linear-gradient(white, blue);
+  background: linear-gradient(135deg, #005a9c, #00b4db);
   padding-top: 5rem;
+  padding-bottom: 5%;
+  color: #fff;
 }
 
 .perpus {
