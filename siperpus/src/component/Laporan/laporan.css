@@ -1,0 +1,11 @@
+.col-md-8 {
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+#beranda {
+  background: linear-gradient(to bottom, #f2f2f2, #dcdcdc);
+  padding-top: 3rem;
+  padding-bottom: 3%;
+  color: #333;
+}
