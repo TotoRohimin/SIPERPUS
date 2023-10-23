@@ -80,6 +80,7 @@ const Book = () => {
               <Nav.Link href="#beranda">Beranda</Nav.Link>
               <Nav.Link href="#tentang">Tentang</Nav.Link>
               <Nav.Link href="#kontak">Kontak</Nav.Link>
+              <Nav.Link href="#chat">Chat AI</Nav.Link>
               <Nav.Link href="#buku">Buku</Nav.Link>
               <NavDropdown title="Data Master" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Peminjaman</NavDropdown.Item>
