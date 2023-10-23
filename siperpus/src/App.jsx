@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LandingPage from "./pages/LandingPage";
+import BookPage from "./pages/BookPage";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div>
-      <LandingPage />
+      <BookPage />
     </div>
   );
 }
