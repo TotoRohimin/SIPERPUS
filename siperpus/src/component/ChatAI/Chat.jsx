@@ -5,7 +5,7 @@ import "./chat.css";
 
 function ChatAI() {
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "",
   });
   const openai = new OpenAIApi(configuration);
 
