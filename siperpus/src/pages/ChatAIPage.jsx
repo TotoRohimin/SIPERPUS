@@ -1,12 +1,7 @@
 import React from "react";
-import ChatAI from "../component/ChatAI/Chat";
 
 function ChatAIPage() {
-  return (
-    <div>
-      <ChatAI />
-    </div>
-  );
+  return <div>Chat AI</div>;
 }
 
 export default ChatAIPage;
