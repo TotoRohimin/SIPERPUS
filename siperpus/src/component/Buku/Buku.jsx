@@ -68,7 +68,7 @@ const Book = () => {
   };
 
   return (
-    <div id="beranda">
+    <div id="buku">
       <Navbar expand="lg" className="navbar bg-light shadow fixed-top">
         <Container>
           <Navbar.Brand href="#beranda">
