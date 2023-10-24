@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import perpusPicture from "/perpus.png";
 import "./beranda.css";
+import { Link } from "react-router-dom";
 
 function Beranda() {
   return (
@@ -20,11 +21,19 @@ function Beranda() {
               <Nav.Link href="#beranda">Beranda</Nav.Link>
               <Nav.Link href="#tentang">Tentang</Nav.Link>
               <Nav.Link href="#kontak">Kontak</Nav.Link>
-              <Nav.Link href="#chat">Chat AI</Nav.Link>
-              <Nav.Link href="#buku">Buku</Nav.Link>
+              <Nav.Link href="#chat">
+                <Link to="/openai">Chat AI</Link>
+              </Nav.Link>
+              <Nav.Link href="#buku">
+                <Link to="/buku">Buku</Link>
+              </Nav.Link>
               <NavDropdown title="Data Master" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Peminjaman</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Laporan</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1">
+                  <Link to="/peminjaman">Peminjaman</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  <Link to="/laporan">Laporan</Link>
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
