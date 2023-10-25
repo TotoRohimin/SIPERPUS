@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Modal, Form, Table } from "react-bootstrap";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./buku.css";
-import axios from "axios";
 
 const Book = () => {
   const [gambar, setGambar] = useState("");
@@ -26,29 +25,13 @@ const Book = () => {
 
   const addBook = () => {
     if ((idBuku, judul, jenis, pengarang, penerbit, tahun, gambar)) {
-      const newBook = { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar };
       if (isEditing) {
         // If in edit mode, update the book instead of adding a new one
         const updatedBooks = [...books];
-        updatedBooks[editIndex] = newBook;
+        updatedBooks[editIndex] = { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar };
         setBooks(updatedBooks);
       } else {
-        // Make a POST request to the mock API to add a new book
-        axios
-          .post("https://6523fb78ea560a22a4e92dd9.mockapi.io/buku", newBook)
-          .then((response) => {
-            // Handle the success response from the API
-            if (response.status === 201) {
-              // Successfully added the book
-              setBooks([...books, newBook]);
-              window.alert("Buku berhasil ditambahkan.");
-            }
-          })
-          .catch((Error) => {
-            // Handle any errors that occur during the POST request
-            console.error("Error adding the book: ", error);
-            window.alert("Gagal menambahkan buku.");
-          });
+        setBooks([...books, { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar }]);
       }
       setGambar("");
       setIdBuku("");
