@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Card } from "react-bootstrap";
+import { Button, Modal, Form, Table } from "react-bootstrap";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./buku.css";
+import axios from "axios";
 
 const Book = () => {
   const [gambar, setGambar] = useState("");
@@ -25,13 +26,29 @@ const Book = () => {
 
   const addBook = () => {
     if ((idBuku, judul, jenis, pengarang, penerbit, tahun, gambar)) {
+      const newBook = { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar };
       if (isEditing) {
         // If in edit mode, update the book instead of adding a new one
         const updatedBooks = [...books];
-        updatedBooks[editIndex] = { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar };
+        updatedBooks[editIndex] = newBook;
         setBooks(updatedBooks);
       } else {
-        setBooks([...books, { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar }]);
+        // Make a POST request to the mock API to add a new book
+        axios
+          .post("https://6523fb78ea560a22a4e92dd9.mockapi.io/buku", newBook)
+          .then((response) => {
+            // Handle the success response from the API
+            if (response.status === 201) {
+              // Successfully added the book
+              setBooks([...books, newBook]);
+              window.alert("Buku berhasil ditambahkan.");
+            }
+          })
+          .catch((Error) => {
+            // Handle any errors that occur during the POST request
+            console.error("Error adding the book: ", error);
+            window.alert("Gagal menambahkan buku.");
+          });
       }
       setGambar("");
       setIdBuku("");
@@ -102,12 +119,12 @@ const Book = () => {
           <Modal.Body>
             <Form>
               <Form.Group>
-                <Form.Label>URL Gambar Buku</Form.Label>
-                <Form.Control type="text" placeholder="Masukkan URL gambar buku" value={gambar} onChange={(e) => setGambar(e.target.value)} />
-              </Form.Group>
-              <Form.Group>
                 <Form.Label>ID Buku</Form.Label>
                 <Form.Control type="text" placeholder="Masukkan Id buku" value={idBuku} onChange={(e) => setIdBuku(e.target.value)} />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>URL Gambar Buku</Form.Label>
+                <Form.Control type="text" placeholder="Masukkan URL gambar buku" value={gambar} onChange={(e) => setGambar(e.target.value)} />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Judul Buku</Form.Label>
@@ -153,33 +170,43 @@ const Book = () => {
           </Modal.Footer>
         </Modal>
 
-        <div className="card-container">
-          {books.map((book, index) => (
-            <Card key={index} style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={book.gambar} /> {/* Tambahkan gambar di sini */}
-              <Card.Body>
-                <Card.Title>{book.judul}</Card.Title>
-                <Card.Text>
-                  ID Buku: {book.idBuku}
-                  <br />
-                  Jenis Buku: {book.jenis}
-                  <br />
-                  Pengarang: {book.pengarang}
-                  <br />
-                  Penerbit: {book.penerbit}
-                  <br />
-                  Tahun Terbit: {book.tahun}
-                </Card.Text>
-                <Button variant="danger" onClick={() => deleteBook(index)}>
-                  Hapus
-                </Button>
-                <Button variant="info" onClick={() => editBook(index)}>
-                  Edit
-                </Button>
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Gambar</th>
+              <th>Judul</th>
+              <th>ID Buku</th>
+              <th>Jenis Buku</th>
+              <th>Pengarang</th>
+              <th>Penerbit</th>
+              <th>Tahun Terbit</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {books.map((book, index) => (
+              <tr key={index}>
+                <td>
+                  <img src={book.gambar} alt={book.judul} style={{ maxWidth: "100px" }} />
+                </td>
+                <td>{book.judul}</td>
+                <td>{book.idBuku}</td>
+                <td>{book.jenis}</td>
+                <td>{book.pengarang}</td>
+                <td>{book.penerbit}</td>
+                <td>{book.tahun}</td>
+                <td>
+                  <Button variant="danger" onClick={() => deleteBook(index)}>
+                    Hapus
+                  </Button>
+                  <Button variant="info" onClick={() => editBook(index)}>
+                    Edit
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     </div>
   );
