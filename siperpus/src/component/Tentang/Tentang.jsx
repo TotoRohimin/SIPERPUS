@@ -28,14 +28,12 @@ function Tentang() {
               <Card.Img variant="top" src={perpusPicture1} />
               <Card.Body>
                 <Card.Title>Perspektif Pendidikan dalam Bingkai Ilmu dan Tokoh</Card.Title>
-                <Button variant="primary">Lihat Detail</Button>
               </Card.Body>
             </Card>
             <Card style={{ width: "18rem", float: "left", margin: "40px" }}>
               <Card.Img variant="top" src={perpusPicture2} />
               <Card.Body>
                 <Card.Title>Pelakor</Card.Title>
-                <Button variant="primary">Lihat Detail</Button>
               </Card.Body>
             </Card>
 
@@ -43,7 +41,6 @@ function Tentang() {
               <Card.Img variant="top" src={perpusPicture3} />
               <Card.Body>
                 <Card.Title>Menanti Restu Langit</Card.Title>
-                <Button variant="primary">Lihat Detail</Button>
               </Card.Body>
             </Card>
           </div>
