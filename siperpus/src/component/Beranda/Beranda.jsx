@@ -22,17 +22,25 @@ function Beranda() {
               <Nav.Link href="#tentang">Tentang</Nav.Link>
               <Nav.Link href="#kontak">Kontak</Nav.Link>
               <Nav.Link href="#chat">
-                <Link to="/openai">Chat AI</Link>
+                <Link to="/openai" style={{ textDecoration: "none" }}>
+                  Chat AI
+                </Link>
               </Nav.Link>
               <Nav.Link href="#buku">
-                <Link to="/buku">Buku</Link>
+                <Link to="/buku" style={{ textDecoration: "none" }}>
+                  Buku
+                </Link>
               </Nav.Link>
               <NavDropdown title="Data Master" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">
-                  <Link to="/peminjaman">Peminjaman</Link>
+                  <Link to="/peminjaman" style={{ textDecoration: "none" }}>
+                    Peminjaman
+                  </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  <Link to="/laporan">Laporan</Link>
+                  <Link to="/laporan" style={{ textDecoration: "none" }}>
+                    Laporan
+                  </Link>
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
