@@ -6,12 +6,7 @@ import "./buku.css";
 const Book = () => {
   const [gambar, setGambar] = useState("");
   const [show, setShow] = useState(false);
-  const [books, setBooks] = useState([
-    { gambar: "https://s3-ap-southeast-1.amazonaws.com/ebook-previews/31754/100794/1.jpg", judul: "Dilan 1990", idBuku: "B001", jenis: "Fiksi", pengarang: "Pidi Baiq", penerbit: "Mizan", tahun: "2016" },
-    { gambar: "https://s3-ap-southeast-1.amazonaws.com/ebook-previews/31755/100795/1.jpg", judul: "Dilan 1991", idBuku: "B002", jenis: "Fiksi", pengarang: "Pidi Baiq", penerbit: "Mizan", tahun: "2016" },
-    { gambar: "https://assets.kompasiana.com/items/album/2019/03/25/img-20190325-wa0009-5c98787495760e3f4d368524.jpg?t=o&v=770", judul: "Milea", idBuku: "B003", jenis: "Fiksi", pengarang: "Pidi Baiq", penerbit: "Mizan", tahun: "2020" },
-    { gambar: "https://cdn.gramedia.com/uploads/items/9786026716897.jpg", judul: "Ancika 1995", idBuku: "B004", jenis: "Fiksi", pengarang: "Pidi Baiq", penerbit: "Mizan", tahun: "2021" },
-  ]);
+  const [books, setBooks] = useState([]);
   const [idBuku, setIdBuku] = useState("");
   const [judul, setJudul] = useState("");
   const [jenis, setJenis] = useState("");
