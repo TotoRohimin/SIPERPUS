@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal, Form, Table } from "react-bootstrap";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./buku.css";
+import axios from "axios";
 
 const Book = () => {
   const [gambar, setGambar] = useState("");
@@ -16,6 +17,17 @@ const Book = () => {
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
   const [editIndex, setEditIndex] = useState(null); // New state to track the book being edited
 
+  useEffect(() => {
+    axios
+      .get("https://65389527a543859d1bb199cd.mockapi.io/buku")
+      .then((response) => {
+        setBooks(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
@@ -25,14 +37,23 @@ const Book = () => {
 
   const addBook = () => {
     if ((idBuku, judul, jenis, pengarang, penerbit, tahun, gambar)) {
+      const newBook = { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar };
       if (isEditing) {
         // If in edit mode, update the book instead of adding a new one
         const updatedBooks = [...books];
-        updatedBooks[editIndex] = { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar };
+        updatedBooks[editIndex] = newBook;
         setBooks(updatedBooks);
       } else {
-        setBooks([...books, { idBuku, judul, jenis, pengarang, penerbit, tahun, gambar }]);
+        axios
+          .post("https://65389527a543859d1bb199cd.mockapi.io/buku", newBook)
+          .then((response) => {
+            setBooks([...books, response.data]);
+          })
+          .catch((error) => {
+            console.error("Error adding book", error);
+          });
       }
+
       setGambar("");
       setIdBuku("");
       setJudul("");
@@ -56,15 +77,45 @@ const Book = () => {
     setIsEditing(true);
     setEditIndex(index);
     handleShow();
-    // Add an alert when the "Edit" button is clicked
-    window.alert("Anda akan mengedit buku ini.");
   };
 
   const deleteBook = (index) => {
-    const updatedBooks = [...books];
-    updatedBooks.splice(index, 1);
-    setBooks(updatedBooks);
-    window.alert("Buku telah dihapus.");
+    const bookIdToDelete = books[index].idBuku;
+    axios
+      .delete(`https://65389527a543859d1bb199cd.mockapi.io/buku/${bookIdToDelete}`)
+      .then(() => {
+        const updatedBooks = [...books];
+        updatedBooks.splice(index, 1);
+        setBooks(updatedBooks);
+        window.alert("Buku telah dihapus.");
+      })
+      .catch((error) => {
+        console.error("Error deleting book:", error);
+      });
+  };
+
+  const updateBook = () => {
+    const updatedBook = {
+      idBuku,
+      judul,
+      jenis,
+      pengarang,
+      penerbit,
+      tahun,
+      gambar,
+    };
+
+    axios
+      .put(`https://65389527a543859d1bb199cd.mockapi.io/buku/${books[editIndex].idBuku}`, updatedBook)
+      .then(() => {
+        const updatedBooks = [...books];
+        updatedBooks[editIndex] = updatedBook;
+        setBooks(updatedBooks);
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Error updating book", error);
+      });
   };
 
   return (
@@ -117,9 +168,14 @@ const Book = () => {
                 <Form.Label>Jenis Buku</Form.Label>
                 <Form.Select value={jenis} onChange={(e) => setJenis(e.target.value)}>
                   <option value="">Pilih Jenis Buku</option>
-                  <option value="Fiksi">Fiksi</option>
-                  <option value="Non-Fiksi">Non-Fiksi</option>
+                  <option value="Fiksi">Novel</option>
+                  <option value="Non-Fiksi">Majalah</option>
+                  <option value="Biografi">Kamus</option>
                   <option value="Biografi">Biografi</option>
+                  <option value="Biografi">Komik</option>
+                  <option value="Biografi">Manga</option>
+                  <option value="Biografi">Karya Ilmiah</option>
+                  <option value="Biografi">Ensiklopedia</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group>
@@ -143,8 +199,12 @@ const Book = () => {
             <Button
               variant="primary"
               onClick={() => {
-                addBook();
-                const message = isEditing ? "Buku berhasil diedit." : "Buku berhasil ditambahkan.";
+                if (isEditing) {
+                  updateBook();
+                } else {
+                  addBook();
+                }
+                const message = isEditing ? "Buku berhasil diperbarui" : "Buku berhasil ditambahkan.";
                 window.alert(message);
               }}
             >
