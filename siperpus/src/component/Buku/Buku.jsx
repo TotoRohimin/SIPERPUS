@@ -16,6 +16,7 @@ const Book = () => {
   const [tahun, setTahun] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
   const [editIndex, setEditIndex] = useState(null); // New state to track the book being edited
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     axios
@@ -118,6 +119,8 @@ const Book = () => {
       });
   };
 
+  const filteredBooks = books.filter((book) => book.judul.toLowerCase().includes(searchTerm.toLowerCase()));
+
   return (
     <div id="buku">
       <Navbar expand="lg" className="navbar bg-light shadow fixed-top">
@@ -142,7 +145,7 @@ const Book = () => {
         </Container>
       </Navbar>
       <div>
-        <Button variant="primary" onClick={handleShow}>
+        <Button className="add-button" variant="primary" onClick={handleShow}>
           Tambah Buku
         </Button>
 
@@ -212,6 +215,9 @@ const Book = () => {
             </Button>
           </Modal.Footer>
         </Modal>
+        <div className="search-bar">
+          <Form.Control type="text" placeholder="Cari buku..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+        </div>
 
         <Table striped bordered hover>
           <thead>
@@ -227,7 +233,7 @@ const Book = () => {
             </tr>
           </thead>
           <tbody>
-            {books.map((book, index) => (
+            {filteredBooks.map((book, index) => (
               <tr key={index}>
                 <td>
                   <img src={book.gambar} alt={book.judul} style={{ maxWidth: "100px" }} />
