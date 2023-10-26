@@ -6,6 +6,15 @@
   padding-top: 5rem;
 }
 
+.add-button {
+  margin-bottom: 16px; /* Menambahkan margin di bagian bawah tombol "Tambah Buku" */
+}
+
+/* CSS untuk mengatur margin */
+.search-bar {
+  margin-bottom: 16px;
+}
+
 /* Modal */
 .modal-dialog {
   max-width: 600px;
