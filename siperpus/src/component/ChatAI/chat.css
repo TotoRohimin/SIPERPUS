@@ -1,0 +1,17 @@
+.response {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+#navbar {
+  background: linear-gradient(to bottom, #f2f2f2, #dcdcdc);
+  padding-top: 5rem;
+  padding-bottom: 3%;
+  color: #333;
+}
