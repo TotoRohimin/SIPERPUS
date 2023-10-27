@@ -26,7 +26,23 @@ function ChatAI() {
       setResult(response.choices[0].text);
 
       if (prompt.includes("")) {
-        const customResponse = "Anda dapat meminjam buku di SIPERPUS dengan mengikuti langkah-langkah berikut: [Masukkan langkah-langkah di sini]";
+        const customResponse = (
+          <div>
+            Anda dapat meminjam buku di SIPERPUS dengan mengikuti langkah-langkah berikut:
+            <br />
+            1. Kunjungi terlebih dahulu website SIPERPUS
+            <br />
+            2. Kemudian, anda akan langsung masuk ke halaman utama
+            <br />
+            3. Kemudian, lihat dibagian navbar ada menu Buku
+            <br />
+            4. Pilih menu buku
+            <br />
+            5. Lalu, anda masuk ke halaman Buku
+            <br />
+            6. Selamat, anda sudah bisa meminjam Buku di SIPERPUS.
+          </div>
+        );
         setResult(customResponse);
       }
       setData("");
