@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Table, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./peminjaman.css";
 
 function Peminjaman() {
@@ -122,6 +123,11 @@ function Peminjaman() {
                 <NavDropdown.Item href="#action/3.1">Peminjaman</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Laporan</NavDropdown.Item>
               </NavDropdown>
+              <Button variant="danger">
+                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                  Kembali
+                </Link>
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
