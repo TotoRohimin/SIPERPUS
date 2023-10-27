@@ -3,6 +3,7 @@ import { Button, Modal, Form, Table } from "react-bootstrap";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./buku.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Book = () => {
   const [gambar, setGambar] = useState("");
@@ -140,6 +141,11 @@ const Book = () => {
                 <NavDropdown.Item href="#action/3.1">Peminjaman</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Laporan</NavDropdown.Item>
               </NavDropdown>
+              <Button variant="danger">
+                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                  Kembali
+                </Link>
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
