@@ -1,8 +1,8 @@
 import React from "react";
 import Beranda from "../component/Beranda/Beranda";
 import Tentang from "../component/Tentang/Tentang";
-import Footer from "../component/Kontak/footer";
 import Kontak from "../component/Kontak/Kontak";
+import Footer from "../component/Footer/Footer";
 
 function LandingPage() {
   return (
