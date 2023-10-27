@@ -9,7 +9,7 @@ function ChatAI() {
     dangerouslyAllowBrowser: true,
   });
 
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState("Bagaimana saya bisa meminjam buku di SIPERPUS?");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -24,6 +24,11 @@ function ChatAI() {
         max_tokens: 100,
       });
       setResult(response.choices[0].text);
+
+      if (prompt.includes("")) {
+        const customResponse = "Anda dapat meminjam buku di SIPERPUS dengan mengikuti langkah-langkah berikut: [Masukkan langkah-langkah di sini]";
+        setResult(customResponse);
+      }
       setData("");
     } catch (error) {
       console.log(error);
