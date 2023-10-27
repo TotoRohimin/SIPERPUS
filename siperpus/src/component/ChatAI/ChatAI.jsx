@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import OpenAIApi, { OpenAI } from "openai";
 import { Container, Form, Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./chat.css";
 
 function ChatAI() {
@@ -72,6 +73,11 @@ function ChatAI() {
                 <NavDropdown.Item href="#action/3.1">Peminjaman</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Laporan</NavDropdown.Item>
               </NavDropdown>
+              <Button variant="danger">
+                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                  Kembali
+                </Link>
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
