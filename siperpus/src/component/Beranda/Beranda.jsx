@@ -12,7 +12,7 @@ function Beranda() {
     <div id="beranda">
       <Navbar expand="lg" className="navbar bg-light shadow fixed-top">
         <Container>
-          <Navbar.Brand href="#beranda">
+          <Navbar.Brand href="#beranda" style={{ color: "blue" }}>
             <b>SIPERPUS</b>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
