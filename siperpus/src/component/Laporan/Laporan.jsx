@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { Container, Form, Button, Table, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./laporan.css";
 
 function Laporan() {
@@ -16,23 +17,28 @@ function Laporan() {
     totalPeminjam: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
-  };
+    }));
+  }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setData([...data, formData]);
-    setFormData({
-      bulan: "",
-      totalBuku: "",
-      totalPeminjam: "",
-    });
-  };
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      setData((prevData) => [...prevData, formData]);
+      setFormData({
+        bulan: "",
+        totalBuku: "",
+        totalPeminjam: "",
+      });
+    },
+    [formData]
+  );
+
+  const memoizedData = useMemo(() => data, [data]);
 
   return (
     <div id="beranda">
@@ -53,6 +59,11 @@ function Laporan() {
                 <NavDropdown.Item href="#action/3.1">Peminjaman</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Laporan</NavDropdown.Item>
               </NavDropdown>
+              <Button variant="danger">
+                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                  Kembali
+                </Link>
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -88,7 +99,7 @@ function Laporan() {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => (
+              {memoizedData.map((item, index) => (
                 <tr key={index}>
                   <td>{item.bulan}</td>
                   <td>{item.totalBuku}</td>
